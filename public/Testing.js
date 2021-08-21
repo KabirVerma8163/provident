@@ -1,4 +1,10 @@
-var http = require('http');
+// import * as http from 'http';
+// import dotenv from "dotenv";
+// let promise = import("dotenv");
+// const SANDBOX_TOKEN = process.env.SANDBOX_TOKEN;
+// const CLOUD_TOKEN = process.env.CLOUD_TOKEN;
+// var http = require('http');
+
 const loadHighCharts = async () => {
     const { default: Highcharts } =
     await import('https://code.highcharts.com/stock/highstock.js');
@@ -13,6 +19,7 @@ function generateURL(symbol, type, date)
 {
     const base = 'https://sandbox.iexapis.com/stable/stock/';
     const token = '?token=Tsk_7124566e8c6147939d1708c99bd3b78a';
+    // const token = `?token=${SANDBOX_TOKEN}`;
     return base + symbol +'/'+ type +'/' + date + token;
 }
 function generateGenericURL(params)
@@ -74,9 +81,9 @@ function createOHLCGraph(symbol, type, timeRange, elementName)
                 labels: {
                     align: 'left'
                 },
-                top: '80%',
-                height: '20%',
-                offset: 0
+                // top: '80%',
+                // height: '20%',
+                // offset: 0
             }],
             tooltip: {
                 shape: 'square',
@@ -142,3 +149,5 @@ http.createServer(function (req, res) {
     res.write(req.url);
     res.end();
 }).listen(8080);
+
+
