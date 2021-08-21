@@ -1,51 +1,37 @@
-// import * as http from 'http';
-// import dotenv from "dotenv";
-// let promise = import("dotenv");
-// const SANDBOX_TOKEN = process.env.SANDBOX_TOKEN;
-// const CLOUD_TOKEN = process.env.CLOUD_TOKEN;
-// var http = require('http');
-
-const loadHighCharts = async () => {
-    const { default: Highcharts } =
-    await import('https://code.highcharts.com/stock/highstock.js');
-    await import('https://code.highcharts.com/stock/modules/data.js');
-    await import('https://code.highcharts.com/stock/modules/drag-panes.js');
-    await import('https://code.highcharts.com/modules/price-indicator.js');
-    await import('https://code.highcharts.com/modules/full-screen.js');
-    await import('https://code.highcharts.com/stock/modules/heikinashi.js');
-    await import('https://code.highcharts.com/stock/modules/hollowcandlestick.js');
-};
+let base;
+let token;
+(function()
+{
+    base = 'https://sandbox.iexapis.com/stable/stock/';
+    token = '?token=Tsk_7124566e8c6147939d1708c99bd3b78a';
+})();
 function generateURL(symbol, type, date)
 {
-    const base = 'https://sandbox.iexapis.com/stable/stock/';
-    const token = '?token=Tsk_7124566e8c6147939d1708c99bd3b78a';
-    // const token = `?token=${SANDBOX_TOKEN}`;
     return base + symbol +'/'+ type +'/' + date + token;
 }
 function generateGenericURL(params)
 {
-    const base = 'https://sandbox.iexapis.com/stable/stock/';
-    const token = '?token=Tsk_7124566e8c6147939d1708c99bd3b78a';
-    var result = base;
+    let result = base;
     for (let i = 0; i < params.length; i++)
     {
         result += params[i] + "/";
     }
+    result += token;
+    console.log(result);
     return result;
 }
 function getList(listType)
 {
+    let list = [];
     Highcharts.getJSON(generateGenericURL(['market', 'list', listType]), function (data)
     {
-        var list = [];
         for (let i = 0; i < data.length; i++)
         {
             list.push(data[i].symbol);
         }
-        return list;
+        createOHLCGraph(list[1], 'chart', '1y', 'container');
     });
 }
-console.log(getList('gainers'));
 function createOHLCGraph(symbol, type, timeRange, elementName)
 {
     Highcharts.getJSON(generateURL(symbol, type, timeRange), function (data) {
@@ -119,13 +105,13 @@ function createOHLCGraph(symbol, type, timeRange, elementName)
             },
             series: [{
                 type: 'ohlc',
-                id: 'aapl-ohlc',
-                name: 'AAPL Stock Price',
+                id: `${symbol}-ohlc`,
+                name: `${symbol} Stock Price`,
                 data: ohlc
             }, {
                 type: 'column',
-                id: 'aapl-volume',
-                name: 'AAPL Volume',
+                id: `${symbol}-volume`,
+                name: `${symbol} Volume`,
                 data: volume,
                 // yAxis: 1
             }],
@@ -149,5 +135,3 @@ http.createServer(function (req, res) {
     res.write(req.url);
     res.end();
 }).listen(8080);
-
-
