@@ -7,7 +7,6 @@ let urls = new Array(5);
 let sources = new Array(5);
 
 
-
 function storeTicker()
 {
     ticker = document.getElementById("ticker").value
@@ -30,9 +29,10 @@ fetch(`https://sandbox.iexapis.com/stable/stock/${ticker}/news/last/5?token=Tsk_
             headlines[i] = news[i].headline;
         }
 
-        document.getElementById("please").innerHTML = headlines[0];
+        document.getElementById("heading1").innerHTML = headlines[0];
 
     });
+
 
 
 
