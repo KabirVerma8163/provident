@@ -208,12 +208,14 @@ function createCandlestickGraph(symbol, type, timeRange, elementName)
 function searchSymbol()
 {
     let symbol = document.getElementById("stockInput").value;
+    symbol = symbol.toUpperCase();
     createCandlestickGraph(symbol, 'chart', '1y', 'graph1');
     var othergraphs = [document.getElementById("graph2"),document.getElementById("graph3"),document.getElementById("graph4"),document.getElementById("graph5")];
     for (let i = 0; i < othergraphs.length; i++)
     {
         othergraphs[i].style.display = 'none';
     }
+    document.getElementById("stockInput").value = "";
 }
 /*http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});

@@ -58,7 +58,7 @@
 </div>
 
 <div style="alignment: bottom; padding-top: 100px;"> <!-- body -->
-  <div style="width: 40%; float: left">
+  <div style="width: 25%; padding: 20px; float: left">
     <div style="float: none; text-align: center; color: #ffffff; font-size: 30pt">
       <div style="margin: 5px;">
         <input style="float: left; width: 70%; color: #0f2634" type="text" id="stockInput" placeholder="ticker symbol">
@@ -66,12 +66,12 @@
         <ul id="myUL">
         </ul>
       </div>
-      <h2 style="clear: left; margin: 5px; padding: 20px; background-color: #5eabdb" onclick="getListAndUpdateGraphs('gainers', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 Gainers</h2>
-      <h2 style="margin: 5px; padding: 20px; background-color: #5eabdb" onclick="getListAndUpdateGraphs('losers', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 Losers</h2>
-      <h2 style="margin: 5px; padding: 20px; background-color: #5eabdb" onclick="getListAndUpdateGraphs('mostactive', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 Most Active</h2>
+      <button style="clear: left; margin: 5px; padding: 20px; width: 100%; background-color: #5eabdb" onclick="getListAndUpdateGraphs('gainers', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 Gainers</button>
+      <button style="margin: 5px; padding: 20px; width: 100%; background-color: #5eabdb" onclick="getListAndUpdateGraphs('losers', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 Losers</button>
+      <button style="margin: 5px; padding: 20px; width: 100%; background-color: #5eabdb" onclick="getListAndUpdateGraphs('mostactive', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 Most Active</button>
     </div>
   </div>
-  <div style="width: 60%; alignment: right; float: right"> <!-- stonks -->
+  <div style="width:75%; alignment: right; float: right"> <!-- stonks -->
     <div id="graph1" style="position:relative; alignment: bottom; padding-top: 20px" class="chart"></div>
     <div id="graph2" style="position:relative; alignment: bottom; padding-top: 20px" class="chart"></div>
     <div id="graph3" style="position:relative; alignment: bottom;padding-top: 20px" class="chart"></div>
