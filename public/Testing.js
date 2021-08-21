@@ -4,6 +4,39 @@ let token;
 {
     base = 'https://sandbox.iexapis.com/stable/stock/';
     token = '?token=Tsk_7124566e8c6147939d1708c99bd3b78a';
+    Highcharts.theme = {
+        colors: ['#0892a6', '#000000', '#ED561B', '#DDDF00', '#24CBE5', '#64E572',
+            '#FF9655', '#FFF263', '#6AF9C4'],
+        chart: {
+            backgroundColor: '#0f2634',
+        },
+        title: {
+            style: {
+                color: '#000',
+                font: 'bold 16px "Dosis", Verdana, sans-serif'
+            }
+        },
+        subtitle: {
+            style: {
+                color: '#666666',
+                font: 'bold 12px "Dosis", Verdana, sans-serif'
+            }
+        },
+        legend: {
+            itemStyle: {
+                font: '9pt "Dosis", Verdana, sans-serif',
+                color: 'black'
+            },
+            itemHoverStyle:{
+                color: 'gray'
+            }
+        },
+        series: {
+            color: '#000000'
+        }
+    };
+// Apply the theme
+    Highcharts.setOptions(Highcharts.theme);
 })();
 function generateURL(symbol, type, date)
 {
@@ -20,22 +53,20 @@ function generateGenericURL(params)
     console.log(result);
     return result;
 }
-function getList(listType)
+async function getList(listType, number, type, timeRange, elementName)
 {
     let list = [];
-    Highcharts.getJSON(generateGenericURL(['market', 'list', listType]), function (data)
+    const response = await fetch(generateGenericURL(['market', 'list', listType]));
+    const data = await response.json();
+    for (let i = 0; i < data.length; i++)
     {
-        for (let i = 0; i < data.length; i++)
-        {
-            list.push(data[i].symbol);
-        }
-        createOHLCGraph(list[1], 'chart', '1y', 'container');
-    });
+        list.push(data[i].symbol);
+    }
+    return list;
 }
 function createOHLCGraph(symbol, type, timeRange, elementName)
 {
     Highcharts.getJSON(generateURL(symbol, type, timeRange), function (data) {
-        console.log(data);
         var ohlc = [],
             volume = [],
             dataLength = data.length,
@@ -55,6 +86,11 @@ function createOHLCGraph(symbol, type, timeRange, elementName)
             ]);
         }
         Highcharts.stockChart(elementName, {
+            title: {
+                text: `${symbol} Stock Price`,
+                align: 'left',
+
+            },
             yAxis: [{
                 labels: {
                     align: 'left'
@@ -130,8 +166,8 @@ function createOHLCGraph(symbol, type, timeRange, elementName)
         });
     });
 }
-http.createServer(function (req, res) {
+/*http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(req.url);
     res.end();
-}).listen(8080);
+}).listen(8080);*/
