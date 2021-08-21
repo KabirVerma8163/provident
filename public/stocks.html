@@ -60,15 +60,15 @@
 <div style="alignment: bottom; padding-top: 100px;"> <!-- body -->
   <div style="width: 40%; float: left">
     <div style="float: none; text-align: center; color: #ffffff; font-size: 30pt">
-      <div>
-        <input style="float: left" type="text" id="stockInput" onkeyup="myFunction()" placeholder="Search for names..">
-        <button style="float: right" onclick="searchSymbol()" class="font-Dosis">Search</button>
+      <div style="margin: 5px;">
+        <input style="float: left; width: 70%; color: #0f2634" type="text" id="stockInput" placeholder="ticker symbol">
+        <button style="alignment: left" onclick="searchSymbol()" class="font-Dosis">Search</button>
         <ul id="myUL">
         </ul>
       </div>
-      <h2 style="margin: 5px; padding: 20px; background-color: #5eabdb" onclick="getListAndUpdateGraphs('gainers', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 gainers</h2>
-      <h2 style="margin: 5px; padding: 20px; background-color: #5eabdb" onclick="getListAndUpdateGraphs('losers', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 losers</h2>
-      <h2 style="margin: 5px; padding: 20px; background-color: #5eabdb" onclick="getListAndUpdateGraphs('mostactive', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 most active</h2>
+      <h2 style="clear: left; margin: 5px; padding: 20px; background-color: #5eabdb" onclick="getListAndUpdateGraphs('gainers', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 Gainers</h2>
+      <h2 style="margin: 5px; padding: 20px; background-color: #5eabdb" onclick="getListAndUpdateGraphs('losers', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 Losers</h2>
+      <h2 style="margin: 5px; padding: 20px; background-color: #5eabdb" onclick="getListAndUpdateGraphs('mostactive', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 Most Active</h2>
     </div>
   </div>
   <div style="width: 60%; alignment: right; float: right"> <!-- stonks -->
