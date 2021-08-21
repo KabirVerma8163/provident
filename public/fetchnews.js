@@ -14,7 +14,6 @@ function storeTicker()
 
 async function fetchNews(ticker)
 {
-    const fetch = require("node-fetch");
     const response = await fetch(`https://sandbox.iexapis.com/stable/stock/${ticker}/news/last/5?token=Tsk_7124566e8c6147939d1708c99bd3b78a`)
     const news = await response.json();
 

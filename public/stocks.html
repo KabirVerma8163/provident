@@ -26,6 +26,7 @@
       let list;
       (async function()
       {
+        await getListAndUpdateGraphs('mostactive', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);
         list = await getList('mostactive');
         setTimeout(function () { createCandlestickGraph(list[0], 'chart', '1y', 'graph1')}, 300);
         setTimeout(function () { createCandlestickGraph(list[1], 'chart', '1y', 'graph2')}, 600);
@@ -63,19 +64,19 @@
 </div>
 
 <div> <!-- body -->
-  <div style="width: 40%; alignment: left; float: left">
+  <div style="width: 40%; alignment: left;">
     <p onclick="">Top 5 gainers</p>
     <p onclick="">Top 5 gainers</p>
     <p onclick="">Top 5 gainers</p>
     <p onclick="">Top 5 gainers</p>
     <p onclick="">Top 5 gainers</p>
   </div>
-  <div style="width: 60%; alignment: right"> <!-- stonks -->
-    <div id="graph1" style="position:relative; alignment: bottom; top: 100px" class="chart"></div>
-    <div id="graph2" style="position:relative; alignment: bottom; padding-top: 150px" class="chart"></div>
-    <div id="graph3" style="position:relative; alignment: bottom;padding-top: 50px" class="chart"></div>
-    <div id="graph4" style="position:relative; alignment: bottom; padding-top: 50px" class="chart"></div>
-    <div id="graph5" style="position:relative; alignment: bottom; padding-top: 50px" class="chart"></div>
+  <div style="width: 60%; alignment: right; float: right"> <!-- stonks -->
+    <div id="graph1" style="position:relative; alignment: bottom; top: 0px" class="chart"></div>
+    <div id="graph2" style="position:relative; alignment: bottom; padding-top: 20px" class="chart"></div>
+    <div id="graph3" style="position:relative; alignment: bottom;padding-top: 20px" class="chart"></div>
+    <div id="graph4" style="position:relative; alignment: bottom; padding-top: 20px" class="chart"></div>
+    <div id="graph5" style="position:relative; alignment: bottom; padding-top: 20px" class="chart"></div>
   </div>
 </div>
 

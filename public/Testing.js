@@ -5,7 +5,7 @@ let token;
     base = 'https://sandbox.iexapis.com/stable/stock/';
     token = '?token=Tsk_7124566e8c6147939d1708c99bd3b78a';
     Highcharts.theme = {
-        colors: ['#0892a6', '#000000', '#ED561B', '#DDDF00', '#24CBE5', '#64E572',
+        colors: ['#21bd35', '#000000', '#ED561B', '#DDDF00', '#24CBE5', '#64E572',
             '#FF9655', '#FFF263', '#6AF9C4'],
         chart: {
             backgroundColor: '#0f2634',
@@ -25,6 +25,7 @@ let token;
         },
         legend: {
             itemStyle: {
+                fontFamily: 'Dosis',
                 font: '9pt "Dosis", Verdana, sans-serif',
                 color: 'black'
             },
@@ -32,9 +33,6 @@ let token;
                 color: 'gray'
             }
         },
-        series: {
-            color: '#000000'
-        }
     };
 // Apply the theme
     Highcharts.setOptions(Highcharts.theme);
@@ -53,7 +51,7 @@ function generateGenericURL(params)
     result += token;
     return result;
 }
-async function getList(listType, number, type, timeRange, elementName)
+async function getList(listType)
 {
     let list = [];
     const response = await fetch(generateGenericURL(['market', 'list', listType]));
@@ -64,13 +62,34 @@ async function getList(listType, number, type, timeRange, elementName)
     }
     return list;
 }
+
+function bruh (callback)
+{
+    getList({
+        success: function(response)
+        {
+            callback(response)
+        }
+    });
+}
+
+async function getListAndUpdateGraphs(listType, chartType, timeRange, elementNames)
+{
+    let list = await getList(listType);
+    for (let i = 0; i < elementNames.length; i++)
+    {
+        setTimeout(function () { createCandlestickGraph(list[i], chartType, timeRange, elementNames[i])}, i * 300);
+    }
+}
+
 function createCandlestickGraph(symbol, type, timeRange, elementName)
 {
     Highcharts.getJSON(generateURL(symbol, type, timeRange), function (data) {
         var ohlc = [],
             volume = [],
             dataLength = data.length,
-            i = 0;
+            i = 0,
+            groupingUnits = [['week', [1]], ['month', [1, 2, 3, 4, 6]]];
 
         for (i; i < dataLength; i += 1) {
             ohlc.push([
@@ -143,13 +162,19 @@ function createCandlestickGraph(symbol, type, timeRange, elementName)
                 type: 'candlestick',
                 id: `${symbol}-ohlc`,
                 name: `${symbol} Stock Price`,
-                data: ohlc
+                data: ohlc,
+                datagrouping: {
+                    units: groupingUnits,
+                }
             }, {
                 type: 'column',
                 id: `${symbol}-volume`,
                 name: `${symbol} Volume`,
                 data: volume,
-                yAxis: 1
+                yAxis: 1,
+                datagrouping: {
+                    units: groupingUnits,
+                }
             }],
             responsive: {
                 rules: [{
