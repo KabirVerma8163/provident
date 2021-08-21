@@ -26,11 +26,12 @@
       let list;
       (async function()
       {
-        list = await getList('gainers');
-        setTimeout(function () { createOHLCGraph(list[0], 'chart', '2y', 'graph1')}, 0);
-        setTimeout(function () { createOHLCGraph(list[1], 'chart', '2y', 'graph2')}, 200);
-        setTimeout(function () { createOHLCGraph(list[2], 'chart', '2y', 'graph3')}, 400);
-        setTimeout(function () { createOHLCGraph(list[3], 'chart', '2y', 'graph4')}, 600);
+        list = await getList('mostactive');
+        setTimeout(function () { createCandlestickGraph(list[0], 'chart', '1y', 'graph1')}, 300);
+        setTimeout(function () { createCandlestickGraph(list[1], 'chart', '1y', 'graph2')}, 600);
+        setTimeout(function () { createCandlestickGraph(list[2], 'chart', '1y', 'graph3')}, 900);
+        setTimeout(function () { createCandlestickGraph(list[3], 'chart', '1y', 'graph4')}, 1200);
+        setTimeout(function () { createCandlestickGraph(list[4], 'chart', '1y', 'graph5')}, 1500);
       })();
     });
   </script>
@@ -62,11 +63,19 @@
 </div>
 
 <div> <!-- body -->
-  <div> <!-- stonks -->
+  <div style="width: 40%; alignment: left; float: left">
+    <p onclick="">Top 5 gainers</p>
+    <p onclick="">Top 5 gainers</p>
+    <p onclick="">Top 5 gainers</p>
+    <p onclick="">Top 5 gainers</p>
+    <p onclick="">Top 5 gainers</p>
+  </div>
+  <div style="width: 60%; alignment: right"> <!-- stonks -->
     <div id="graph1" style="position:relative; alignment: bottom; top: 100px" class="chart"></div>
     <div id="graph2" style="position:relative; alignment: bottom; padding-top: 150px" class="chart"></div>
     <div id="graph3" style="position:relative; alignment: bottom;padding-top: 50px" class="chart"></div>
     <div id="graph4" style="position:relative; alignment: bottom; padding-top: 50px" class="chart"></div>
+    <div id="graph5" style="position:relative; alignment: bottom; padding-top: 50px" class="chart"></div>
   </div>
 </div>
 

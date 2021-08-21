@@ -12,7 +12,8 @@ let token;
         },
         title: {
             style: {
-                color: '#000',
+                color: '#ffffff',
+                fontFamily: 'Dosis',
                 font: 'bold 16px "Dosis", Verdana, sans-serif'
             }
         },
@@ -50,7 +51,6 @@ function generateGenericURL(params)
         result += params[i] + "/";
     }
     result += token;
-    console.log(result);
     return result;
 }
 async function getList(listType, number, type, timeRange, elementName)
@@ -64,7 +64,7 @@ async function getList(listType, number, type, timeRange, elementName)
     }
     return list;
 }
-function createOHLCGraph(symbol, type, timeRange, elementName)
+function createCandlestickGraph(symbol, type, timeRange, elementName)
 {
     Highcharts.getJSON(generateURL(symbol, type, timeRange), function (data) {
         var ohlc = [],
@@ -140,7 +140,7 @@ function createOHLCGraph(symbol, type, timeRange, elementName)
                 }
             },
             series: [{
-                type: 'ohlc',
+                type: 'candlestick',
                 id: `${symbol}-ohlc`,
                 name: `${symbol} Stock Price`,
                 data: ohlc
