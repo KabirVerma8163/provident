@@ -81,9 +81,9 @@ function createOHLCGraph(symbol, type, timeRange, elementName)
                 labels: {
                     align: 'left'
                 },
-                // top: '80%',
-                // height: '20%',
-                // offset: 0
+                top: '80%',
+                height: '20%',
+                offset: 0
             }],
             tooltip: {
                 shape: 'square',
@@ -127,7 +127,7 @@ function createOHLCGraph(symbol, type, timeRange, elementName)
                 id: 'aapl-volume',
                 name: 'AAPL Volume',
                 data: volume,
-                yAxis: 1
+                // yAxis: 1
             }],
             responsive: {
                 rules: [{
