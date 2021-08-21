@@ -113,7 +113,7 @@ function createOHLCGraph(symbol, type, timeRange, elementName)
                 id: `${symbol}-volume`,
                 name: `${symbol} Volume`,
                 data: volume,
-                yAxis: 1
+                // yAxis: 1
             }],
             responsive: {
                 rules: [{

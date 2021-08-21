@@ -7,8 +7,25 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu+Condensed&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
   </style>
+
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+
+  <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+  <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+  <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+  <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+
+
   <script src="navbar.js"></script>
   <script type="text/javascript" src = "./Testing.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      createOHLCGraph('AAPL', 'chart', '2y', 'container');
+    });
+  </script>
 </head>
 <body>
 
@@ -31,16 +48,17 @@
       <a href="#" class="mx-3">Sign Up</a>
     </div>
     <div class="order-first"> <!-- help -->
-      <a href="help.html"><img src="img/logo_placeholder.png" alt="logo" class="h-16"></a>
+      <a href="help.html"><img src="img/Help_Icon.png" alt="logo" class="h-16"></a>
     </div>
   </div>
 </div>
 
 <div> <!-- body -->
   <div> <!-- stonks -->
-    <div id="container" class=""></div>
+    <div id="container" style="position:relative; top: 100px" class=""></div>
   </div>
 </div>
+
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 </body>
