@@ -14,8 +14,11 @@ function storeTicker()
 
 async function fetchNews(ticker)
 {
+    // const fetch = require("node-fetch");
     const response = await fetch(`https://sandbox.iexapis.com/stable/stock/${ticker}/news/last/5?token=Tsk_7124566e8c6147939d1708c99bd3b78a`)
     const news = await response.json();
+
+    console.log(news);
 
     for(let i = 0; i < 5; i++)
     {
@@ -31,6 +34,12 @@ async function fetchNews(ticker)
 {
     await fetchNews(ticker);
     document.getElementById("headline1").innerHTML = headlines[0];
+    document.getElementById("summary1").innerHTML = summaries[0];
+    document.getElementById("source1").innerHTML = sources[0];
+    document.getElementById("url1").innerHTML = urls[0];
+    document.getElementById("image1").innerHTML = images[0];
+    // console.log(headlines[0]);
+    // console.log(summaries[0]);
 })();
 
 
