@@ -63,12 +63,12 @@ async function getList(listType)
     return list;
 }
 
-async function getListAndUpdateGraphs(listType, chartType, timeRange, numberOfGraphs)
+async function getListAndUpdateGraphs(listType, chartType, timeRange, elementNames)
 {
     let list = await getList(listType);
-    for (let i = 0; i < numberOfGraphs; i++)
+    for (let i = 0; i < elementNames.length; i++)
     {
-        setTimeout(function () { createCandlestickGraph(list[i], chartType, timeRange, i)}, i * 300);
+        setTimeout(function () { createCandlestickGraph(list[i], chartType, timeRange,  elementNames[i])}, i * 300);
     }
     var othergraphs = [document.getElementById("section2"),document.getElementById("section3"),document.getElementById("section4"),document.getElementById("section5")];
     for (let i = 0; i < othergraphs.length; i++)
@@ -76,7 +76,7 @@ async function getListAndUpdateGraphs(listType, chartType, timeRange, numberOfGr
         othergraphs[i].style.display = 'block';
     }
 }
-function createCandlestickGraph(symbol, type, timeRange, elementNumber)
+function createCandlestickGraph(symbol, type, timeRange, elementName)
 {
     Highcharts.getJSON(generateURL(symbol, type, timeRange), function (data) {
         var ohlc = [],
@@ -98,7 +98,7 @@ function createCandlestickGraph(symbol, type, timeRange, elementNumber)
                 data[i].volume // the volume
             ]);
         }
-        Highcharts.stockChart(`graph${elementNumber}`, {
+        Highcharts.stockChart(elementName, {
             title: {
                 text: `${symbol} Stock Price`,
                 align: 'left',
