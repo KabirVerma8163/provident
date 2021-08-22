@@ -1,4 +1,7 @@
-let ticker = "aapl";
+let cloud_token = "pk_c1ad38d8a5314ba8b069c9998df9ab5f"
+let sandbox_token = "Tsk_7124566e8c6147939d1708c99bd3b78a"
+
+let ticker = "";
 
 let headlines = new Array(5);
 let summaries = new Array(5);
@@ -7,18 +10,11 @@ let urls = new Array(5);
 let sources = new Array(5);
 
 
-function storeTicker()
-{
-    ticker = document.getElementById("ticker").value
-}
-
-async function fetchNews(ticker)
+async function fetchDefaultNews()
 {
     // const fetch = require("node-fetch");
-    const response = await fetch(`https://sandbox.iexapis.com/stable/stock/${ticker}/news/last/5?token=Tsk_7124566e8c6147939d1708c99bd3b78a`)
+    const response = await fetch(`https://cloud.iexapis.com/stable/time-series/news?range=1m&limit=5&token=${cloud_token}`)
     const news = await response.json();
-
-    console.log(news);
 
     for(let i = 0; i < 5; i++)
     {
@@ -32,8 +28,41 @@ async function fetchNews(ticker)
 
 (async function()
 {
-    await fetchNews(ticker);
+    await fetchDefaultNews();
+    updateStockNews();
 
+})();
+
+function searchTicker()
+{
+    ticker = document.getElementById("ticker").value
+    ticker = ticker.toLowerCase();
+
+    fetchStockNews(ticker);
+    document.getElementById("ticker").value = "";
+
+}
+
+async function fetchStockNews(ticker)
+{
+    // const fetch = require("node-fetch");
+    const response = await fetch(`https://cloud.iexapis.com/stable/stock/${ticker}/news/last/5?token=${cloud_token}`)
+    const news = await response.json();
+
+    for(let i = 0; i < 5; i++)
+    {
+        sources[i] = news[i].source;
+        urls[i] = news[i].url;
+        images[i] = news[i].image;
+        summaries[i] = news[i].summary;
+        headlines[i] = news[i].headline;
+    }
+
+    await updateStockNews();
+}
+
+async function updateStockNews()
+{
     document.getElementById("headline1").innerHTML = headlines[0];
     document.getElementById("summary1").innerHTML = summaries[0];
     document.getElementById("source1").innerHTML = sources[0];
@@ -63,9 +92,4 @@ async function fetchNews(ticker)
     document.getElementById("source5").innerHTML = sources[4];
     document.getElementById("url5").setAttribute("href",urls[4]);
     document.getElementById("image5").src = images[4];
-
-})();
-
-
-
-
+}
