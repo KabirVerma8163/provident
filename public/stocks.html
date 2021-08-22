@@ -29,10 +29,10 @@
 </head>
 <body style="background-color: #15181f">
 
-<div id="navbar" style="z-index: 1; background-color: #5eabdb" class="flex fixed w-full bg-red-400 transition-all duration-300"> <!-- navbar -->
-  <div class="flex m-2 ml-0.5 w-3/5"> <!-- right half -->
+<div id="navbar" style="background-color: #5eabdb" class="flex fixed w-full bg-red-400 transition-all duration-300"> <!-- navbar -->
+  <div class="flex m-2 ml-3 w-3/5"> <!-- right half -->
     <div> <!-- logo -->
-      <img src="img/logo_placeholder.png" alt="logo" class="h-16">
+      <img src="img/Provident Logo.png" alt="logo" class="h-16">
     </div>
     <div style="color: #175e87" class="flex items-center font-Dosis text-4xl m-1 text-red-700 font-medium">  <!-- links -->
       <a href="index.html" class="mx-3">Home</a>
@@ -65,36 +65,21 @@
         <input class = "text-center" style="float: left; width: 70%; color: #0f2634" type="text" id="stockInput" placeholder="Ticker Symbol">
         <button style="alignment: left; color: #ffffff" onclick="searchSymbol()" class="font-Dosis">Search</button>
       </div>
-      <div style = "color: #ffffff; font-size: 30pt">
-        <button style="clear: left; margin: 5px; padding: 20px; width: 100%; background-color: #5eabdb" onclick="getListAndUpdateGraphs('gainers', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 Gainers</button>
-        <button style="margin: 5px; padding: 20px; width: 100%; background-color: #5eabdb" onclick="getListAndUpdateGraphs('losers', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 Losers</button>
-        <button style="margin: 5px; padding: 20px; width: 100%; background-color: #5eabdb" onclick="getListAndUpdateGraphs('mostactive', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 Most Active</button>
-      </div>
+      <button style="clear: left; margin: 5px; padding: 20px; width: 100%; background-color: #5eabdb" onclick="getListAndUpdateGraphs('gainers', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 Gainers</button>
+      <button style="margin: 5px; padding: 20px; width: 100%; background-color: #5eabdb" onclick="getListAndUpdateGraphs('losers', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 Losers</button>
+      <button style="margin: 5px; padding: 20px; width: 100%; background-color: #5eabdb" onclick="getListAndUpdateGraphs('mostactive', 'chart', '1y', ['graph1','graph2','graph3','graph4','graph5']);">Top 5 Most Active</button>
     </div>
   </div>
-  <div style="width:75%; alignment: right; float: right; padding-top: 20px"> <!-- stonks -->
-    <div id="section1" style="position:relative; overflow: hidden">
-      <div id="graph1" style="position:relative; float: right;" class="chart"></div>
-    </div>
-    <div id="section2" style="position:relative; overflow: hidden; padding-top: 20px">
-      <div id="graph2" style="position:relative; float: right; " class="chart"></div>
-    </div>
-    <div id="section3" style="position:relative; overflow: hidden; padding-top: 20px">
-      <div id="graph3" style="position:relative; float: right" class="chart"></div>
-    </div>
-    <div id="section4" style="position:relative; overflow: hidden; padding-top: 20px">
-      <div id="graph4" style="position:relative; float: right" class="chart"></div>
-    </div>
-    <div id="section5" style="position:relative; overflow: hidden; padding-top: 20px">
-      <div id="graph5" style="position:relative; float: right" class="chart"></div>
-    </div>
-
-    </div>
+  <div style="width:75%; alignment: right; float: right"> <!-- stonks -->
+    <div id="graph1" style="position:relative; alignment: bottom; padding-top: 20px" class="chart"></div>
+    <div id="graph2" style="position:relative; alignment: bottom; padding-top: 20px" class="chart"></div>
+    <div id="graph3" style="position:relative; alignment: bottom;padding-top: 20px" class="chart"></div>
+    <div id="graph4" style="position:relative; alignment: bottom; padding-top: 20px" class="chart"></div>
+    <div id="graph5" style="position:relative; alignment: bottom; padding-top: 20px" class="chart"></div>
   </div>
 </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 </body>
 </html>
