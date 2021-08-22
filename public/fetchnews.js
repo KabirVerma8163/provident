@@ -13,7 +13,7 @@ let sources = new Array(5);
 async function fetchDefaultNews()
 {
     // const fetch = require("node-fetch");
-    const response = await fetch(`https://cloud.iexapis.com/stable/time-series/news?range=1m&limit=5&token=${cloud_token}`)
+    const response = await fetch(`https://sandbox.iexapis.com/stable/time-series/news?range=1m&limit=5&token=${sandbox_token}`)
     const news = await response.json();
 
     for(let i = 0; i < 5; i++)
