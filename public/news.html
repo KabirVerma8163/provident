@@ -10,7 +10,7 @@
   <script src="navbar.js"></script>
 
 </head>
-<body>
+<body style="background-color: #15181f" class="text-white">
 
 <div id="navbar" style="background-color: #5eabdb" class="flex fixed w-full bg-red-400 transition-all duration-300"> <!-- navbar -->
   <div class="flex m-2 ml-3 w-3/5"> <!-- right half -->
@@ -39,39 +39,108 @@
 
 <br><br><br><br>
 
-<h1 class="text-center font-Dosis text-7xl">News</h1>
+<h1 class="text-center font-Dosis text-7xl text-white">News</h1>
 
 <br>
 
-<div class="flex items-center">
-  <input class="font-Dosis text-center mx-auto" id="ticker" placeholder="Enter the stock ticker">
-  <button onclick="storeTicker()" id="button" class="font-Dosis">Search!</button>
+<div class="flex flex-row w-2/12" style="margin-left: auto; margin-right: auto">
+  <input class="font-Dosis text-center text-3xl text-black" id="ticker" placeholder="Ticker Symbol">
+  <button onclick="searchTicker()" id="button" class="font-Dosis text-white text-3xl" style="padding-left: 8px">Search</button>
 </div>
 
 <br><br><br>
 
-<div class="flex flex-row border-8 rounded border-gray-300 w-8/12 h-80">
+<div class="flex flex-row border-8 rounded border-gray-300 w-8/12 h-100" style="margin-left: auto; margin-right: auto">
 
   <div class="w-2/5 flex items-center">
-    <img src="images[0]" class="h-36 mx-auto">
+    <img src="" id="image1" class="h-52 mx-auto">
   </div>
 
   <div class="w-8/12 h-75">
     <h2 class="text-center font-Dosis font-bold text-3xl" id="headline1"></h2>
     <p class="font-Dosis">Source: <span id="source1"></span></p>
     <p class="font-Dosis text-2xl" id="summary1"></p>
-    <p class="font-Dosis text-2xl">For more, click <a href=urls[0]>here</a></p>
+    <p class="font-Dosis text-2xl">For more, click <a id="url1">here.</a></p>
 
   </div>
 
+</div>
+
+<br><br>
+
+<div class="flex flex-row border-8 rounded border-gray-300 w-8/12 h-100" style="margin-left: auto; margin-right: auto">
+
+  <div class="w-2/5 flex items-center">
+    <img src="" id="image2" class="h-52 mx-auto">
+  </div>
+
+  <div class="w-8/12 h-75">
+    <h2 class="text-center font-Dosis font-bold text-3xl" id="headline2"></h2>
+    <p class="font-Dosis">Source: <span id="source2"></span></p>
+    <p class="font-Dosis text-2xl" id="summary2"></p>
+    <p class="font-Dosis text-2xl">For more, click <a id="url2">here.</a></p>
+
+  </div>
 
 </div>
 
-<br><br><br>
+<br><br>
+
+<div class="flex flex-row border-8 rounded border-gray-300 w-8/12 h-100" style="margin-left: auto; margin-right: auto">
+
+  <div class="w-2/5 flex items-center">
+    <img src="" id="image3" class="h-52 mx-auto">
+  </div>
+
+  <div class="w-8/12 h-75">
+    <h2 class="text-center font-Dosis font-bold text-3xl" id="headline3"></h2>
+    <p class="font-Dosis">Source: <span id="source3"></span></p>
+    <p class="font-Dosis text-2xl" id="summary3"></p>
+    <p class="font-Dosis text-2xl">For more, click <a id="url3">here.</a></p>
+
+  </div>
+
+</div>
+
+<br><br>
+
+<div class="flex flex-row border-8 rounded border-gray-300 w-8/12 h-100" style="margin-left: auto; margin-right: auto">
+
+  <div class="w-2/5 flex items-center">
+    <img src="" id="image4" class="h-52 mx-auto">
+  </div>
+
+  <div class="w-8/12 h-75">
+    <h2 class="text-center font-Dosis font-bold text-3xl" id="headline4"></h2>
+    <p class="font-Dosis">Source: <span id="source4"></span></p>
+    <p class="font-Dosis text-2xl" id="summary4"></p>
+    <p class="font-Dosis text-2xl">For more, click <a id="url4">here.</a></p>
+
+  </div>
+
+</div>
+
+<br><br>
+
+<div class="flex flex-row border-8 rounded border-gray-300 w-8/12 h-100" style="margin-left: auto; margin-right: auto">
+
+  <div class="w-2/5 flex items-center">
+    <img src="" id="image5" class="h-52 mx-auto">
+  </div>
+
+  <div class="w-8/12 h-75">
+    <h2 class="text-center font-Dosis font-bold text-3xl" id="headline5"></h2>
+    <p class="font-Dosis">Source: <span id="source5"></span></p>
+    <p class="font-Dosis text-2xl" id="summary5"></p>
+    <p class="font-Dosis text-2xl">For more, click <a id="url5">here.</a></p>
+
+  </div>
+
+</div>
+
+<br><br>
 
 <script src="fetchnews.js"></script>
-
-
 
 </body>
 </html>

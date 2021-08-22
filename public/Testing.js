@@ -71,9 +71,9 @@ async function getListAndUpdateGraphs(listType, chartType, timeRange, elementNam
         setTimeout(function () { createCandlestickGraph(list[i], chartType, timeRange, elementNames[i])}, i * 300);
     }
     var othergraphs = [document.getElementById("graph2"),document.getElementById("graph3"),document.getElementById("graph4"),document.getElementById("graph5")];
-    for (let i in othergraphs)
+    for (let i = 0; i < othergraphs.length; i++)
     {
-        i.style.display = 'block';
+        othergraphs[i].style.display = 'block';
     }
 }
 
@@ -186,7 +186,7 @@ function createCandlestickGraph(symbol, type, timeRange, elementName)
         });
     });
 }
-function myFunction() {
+/*function myFunction() {
     // Declare variables
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById('myInput');
@@ -204,16 +204,18 @@ function myFunction() {
             li[i].style.display = "none";
         }
     }
-}
+}*/
 function searchSymbol()
 {
-    let symbol = document.getElementById("ticker").value;
-    createCandlestickGraph(symbol, 'chart', '1y', 'chart1');
+    let symbol = document.getElementById("stockInput").value;
+    symbol = symbol.toUpperCase();
+    createCandlestickGraph(symbol, 'chart', '1y', 'graph1');
     var othergraphs = [document.getElementById("graph2"),document.getElementById("graph3"),document.getElementById("graph4"),document.getElementById("graph5")];
-    for (let i in othergraphs)
+    for (let i = 0; i < othergraphs.length; i++)
     {
-        i.style.display = 'none';
+        othergraphs[i].style.display = 'none';
     }
+    document.getElementById("stockInput").value = "";
 }
 /*http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
