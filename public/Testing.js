@@ -63,21 +63,20 @@ async function getList(listType)
     return list;
 }
 
-async function getListAndUpdateGraphs(listType, chartType, timeRange, elementNames)
+async function getListAndUpdateGraphs(listType, chartType, timeRange, numberOfGraphs)
 {
     let list = await getList(listType);
-    for (let i = 0; i < elementNames.length; i++)
+    for (let i = 0; i < numberOfGraphs; i++)
     {
-        setTimeout(function () { createCandlestickGraph(list[i], chartType, timeRange, elementNames[i])}, i * 300);
+        setTimeout(function () { createCandlestickGraph(list[i], chartType, timeRange, i)}, i * 300);
     }
-    var othergraphs = [document.getElementById("graph2"),document.getElementById("graph3"),document.getElementById("graph4"),document.getElementById("graph5")];
+    var othergraphs = [document.getElementById("section2"),document.getElementById("section3"),document.getElementById("section4"),document.getElementById("section5")];
     for (let i = 0; i < othergraphs.length; i++)
     {
         othergraphs[i].style.display = 'block';
     }
 }
-
-function createCandlestickGraph(symbol, type, timeRange, elementName)
+function createCandlestickGraph(symbol, type, timeRange, elementNumber)
 {
     Highcharts.getJSON(generateURL(symbol, type, timeRange), function (data) {
         var ohlc = [],
@@ -99,7 +98,7 @@ function createCandlestickGraph(symbol, type, timeRange, elementName)
                 data[i].volume // the volume
             ]);
         }
-        Highcharts.stockChart(elementName, {
+        Highcharts.stockChart(`graph${elementNumber}`, {
             title: {
                 text: `${symbol} Stock Price`,
                 align: 'left',
@@ -210,10 +209,10 @@ function searchSymbol()
     let symbol = document.getElementById("stockInput").value;
     symbol = symbol.toUpperCase();
     createCandlestickGraph(symbol, 'chart', '1y', 'graph1');
-    var othergraphs = [document.getElementById("graph2"),document.getElementById("graph3"),document.getElementById("graph4"),document.getElementById("graph5")];
+    var othergraphs = [document.getElementById("section2"),document.getElementById("section3"),document.getElementById("section4"),document.getElementById("section5")];
     for (let i = 0; i < othergraphs.length; i++)
     {
-        othergraphs[i].style.display = 'none';
+        othergraphs[i].style.display = 'block';
     }
     document.getElementById("stockInput").value = "";
 }
